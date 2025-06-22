@@ -3,9 +3,9 @@ import { Card } from 'react-bootstrap';
 import ListingDetails from '../components/ListingDetails';
 import PageHeader from '../components/PageHeader';
 
-// ✅ Use Server Side Props (safe in local dev)
-export async function getServerSideProps() {
-  const res = await fetch('http://localhost:3000/api/listings/1206363'); // Use localhost during local development
+// ✅ Production-safe URL (Vercel-hosted)
+export async function getStaticProps() {
+  const res = await fetch('https://my-oz3gzzy1-muskaan-mahajans-projects.vercel.app/api/listings/1');
   const data = await res.json();
 
   return {
@@ -33,7 +33,6 @@ export default function About({ listing }) {
           </Link>
         </Card.Body>
 
-        {/* Listing details rendered here */}
         <ListingDetails listing={listing} />
       </Card>
     </>
